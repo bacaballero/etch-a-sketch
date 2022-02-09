@@ -1,4 +1,3 @@
-let numberOfDivs = 16;
 let mouseDown = false;
 let mouseUp = true;
 
@@ -11,31 +10,36 @@ document.body.onmouseup = () => {
     mouseUp = true;
     mouseDown = false;
 };
+const clearBtn = document.querySelector("#clear");
+clearBtn.onclick = () => reloadGrid();
 
-function makeGrid(rows, cols) {
+function reloadGrid() {
+    clearGrid();
+    makeGrid();
+}
+
+function clearGrid() {
+    grid.innerHTML = '';
+}
+
+function makeGrid(rows=16, cols=16) {
     grid.style.setProperty('--grid-rows', rows);
     grid.style.setProperty('--grid-cols', cols);
     for (let i = 0; i < (rows * cols); i++) {
         let cell = document.createElement('div');
         grid.appendChild(cell).className = 'grid-item';
-    };
-};
-
-function draw() {
-    const cells = document.querySelectorAll('.grid-item');
-    cells.forEach((cell) => {
+        cell.style.backgroundColor = "white";
         cell.addEventListener('mouseover', () => {
             if (!mouseUp) {
                 cell.style.backgroundColor = "black";
             };
         });
-    });
-    cells.forEach((cell) => {
         cell.addEventListener('click', () => {
             cell.style.backgroundColor = "black";
-        })
-    })
+        });
+    };
 };
 
-makeGrid(16, 16); 
-draw();
+
+makeGrid(); 
+
