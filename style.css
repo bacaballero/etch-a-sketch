@@ -3,6 +3,10 @@
     --grid-cols: 1;
 }
 
+.drawn-over { 
+    background-color: black;
+}
+
 .grid-item {
     background-color: white;
     padding: 1px;
