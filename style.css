@@ -3,12 +3,26 @@
     --grid-cols: 1;
 }
 
-.drawn-over { 
-    background-color: black;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: whitesmoke;
+}
+
+#clear {
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    font-size: large;
+
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .grid-item {
-    background-color: white;
+    /*background-color: white; */
+    user-select: none;
     padding: 1px;
     border: 1px solid black;
     text-align: center;
@@ -22,3 +36,19 @@
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
 
+.grid-wrapper {
+    display: grid;
+    justify-content: center;
+}
+
+.button-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 60px;
+    color: rgb(42, 49, 54);
+}

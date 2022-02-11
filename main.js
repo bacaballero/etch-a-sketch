@@ -22,23 +22,27 @@ function clearGrid() {
     grid.innerHTML = '';
 }
 
-function makeGrid(rows=16, cols=16) {
-    grid.style.setProperty('--grid-rows', rows);
-    grid.style.setProperty('--grid-cols', cols);
-    for (let i = 0; i < (rows * cols); i++) {
+function makeGrid(size=16) {
+    grid.style.setProperty('--grid-rows', size);
+    grid.style.setProperty('--grid-cols', size);
+
+    for (let i = 0; i < (size * size); i++) {
         let cell = document.createElement('div');
-        grid.appendChild(cell).className = 'grid-item';
-        cell.style.backgroundColor = "white";
-        cell.addEventListener('mouseover', () => {
-            if (!mouseUp) {
-                cell.style.backgroundColor = "black";
-            };
-        });
-        cell.addEventListener('click', () => {
-            cell.style.backgroundColor = "black";
-        });
+        cell.classList.add('grid-item');
+        //cell.style.backgroundColor = "white";
+        cell.addEventListener('mouseover', draw);
+        cell.addEventListener('mousedown', draw);
+        grid.appendChild(cell)
     };
 };
+
+function draw(e) {
+    if (e.type === 'mouseover' && !mouseDown) {
+        return
+    } else {
+        e.target.style.backgroundColor = "black";
+    }
+}
 
 
 makeGrid(); 
